@@ -33,6 +33,20 @@
                 data: groups,
                 left: 'right'
             },
+            // graphic: {
+            //     elements: [{
+            //         type: 'rect',
+            //         shape: {
+            //             x: 79.11,
+            //             y: 60,
+            //             width: 280,
+            //             height: 20
+            //         },
+            //         style: {
+            //             fill: 'green'
+            //         }
+            //     }]
+            // },
             // tooltip: {
             //     position: 'top',
             //     formatter: function (params) {
@@ -51,6 +65,18 @@
                 bottom: 10,
                 right: 10,
                 containLabel: true
+            },
+            legend: {
+                data: [
+                    {
+                        name: 'Group A',
+                        icon: 'circle',
+                    },
+                    {
+                        name: 'Group B',
+                        icon: 'circle'
+                    }
+                ]
             },
             xAxis: [
                 // {
@@ -72,12 +98,12 @@
                     data: ['A-1', 'A-2', 'A-3', 'A-4', 'B-1', 'B-2', 'B-3', 'C-1', 'C-2', 'C-3', 'C-4', 'C-5', 'C-6', 'D-1', 'D-2', 'D-3'],
                     position: 'top',
                     boundaryGap: true,
-                    offset: 70,
+                    offset: 0,
                     axisTick: {
                         show: false,
                     },
                     axisLabel: {
-                        show: true,
+                        show: false,
                     },
                     axisLine: {
                         onZero: true
@@ -98,7 +124,7 @@
                         onZero: false
                     },
                     splitLine: {
-                        show: false
+                        show: true
                     },
                     axisLabel: {
                         formatter: (value) => {
@@ -141,12 +167,12 @@
                     show: true
                 },
                 splitLine: {
-                    show: false
+                    show: true
                 },
             },
             series: [
                 {
-                    name: 'A',
+                    name: 'Group A',
                     symbol: 'circle',
                     type: 'scatter',
                     symbolSize: function (val) {
@@ -167,7 +193,7 @@
                     }
                 },
                 {
-                    name: 'B',
+                    name: 'Group B',
                     symbol: 'circle',
                     type: 'scatter',
                     markPoint: {
@@ -213,6 +239,9 @@
         };
 
         option && myChart.setOption(option);
+
+        console.log('像素转换：', myChart.convertToPixel({xAxisIndex: 0}, 'A-1'));
+        // var option = myChart.getOption();
     </script>
 </body>
 
