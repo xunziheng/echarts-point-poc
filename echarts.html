@@ -69,11 +69,19 @@
             legend: {
                 data: [
                     {
-                        name: 'Group A',
+                        name: 'Major cities',
                         icon: 'circle',
                     },
                     {
-                        name: 'Group B',
+                        name: 'Inter regional',
+                        icon: 'circle'
+                    },
+                    {
+                        name: 'Outer regional',
+                        icon: 'circle'
+                    },
+                    {
+                        name: 'Remote',
                         icon: 'circle'
                     }
                 ]
@@ -95,7 +103,7 @@
                 // },
                 {
                     type: 'category',
-                    data: ['A-1', 'A-2', 'A-3', 'A-4', 'B-1', 'B-2', 'B-3', 'C-1', 'C-2', 'C-3', 'C-4', 'C-5', 'C-6', 'D-1', 'D-2', 'D-3'],
+                    data: ['A-1', 'A-2', 'A-3', 'A-4'],
                     position: 'top',
                     boundaryGap: true,
                     offset: 0,
@@ -114,7 +122,7 @@
                     axisTick: {
                         show: false,
                     },
-                    data: ['A-1', 'A-2', 'A-3', 'A-4', 'B-1', 'B-2', 'B-3', 'C-1', 'C-2', 'C-3', 'C-4', 'C-5', 'C-6', 'D-1', 'D-2', 'D-3'],
+                    data: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5', 'B-1', 'B-2', 'B-3', 'B-4+', 'C-1', 'C-2', 'C-3+', 'D-1', 'D-2+'],
                     position: 'top',
                     interval: 20,
                     offset: 20,
@@ -124,7 +132,7 @@
                         onZero: false
                     },
                     splitLine: {
-                        show: true
+                        show: false
                     },
                     axisLabel: {
                         formatter: (value) => {
@@ -135,25 +143,25 @@
                                 width: 55,
                                 height: 15,
                                 color: 'white',
-                                backgroundColor: 'green',
+                                backgroundColor: '#0B7680',
                             },
                             B: {
                                 width: 55,
                                 height: 15,
                                 color: 'white',
-                                backgroundColor: 'blue',
+                                backgroundColor: '#9673B5',
                             },
                             C: {
                                 width: 55,
                                 height: 15,
                                 color: 'white',
-                                backgroundColor: 'pink',
+                                backgroundColor: '#1B8DC1',
                             },
                             D: {
                                 width: 55,
                                 height: 15,
                                 color: 'white',
-                                backgroundColor: 'orange',
+                                backgroundColor: '#7D8B40',
                             },
                         }
                     }
@@ -167,19 +175,19 @@
                     show: true
                 },
                 splitLine: {
-                    show: true
+                    show: false
                 },
             },
             series: [
                 {
-                    name: 'Group A',
+                    name: 'Major cities',
                     symbol: 'circle',
                     type: 'scatter',
                     symbolSize: function (val) {
                         return val[2] * 2;
                     },
                     itemStyle: {
-                        color: 'green',
+                        color: '#0B7680',
                         opacity: 0.5,
                     },
                     xAxisIndex: 1,
@@ -193,25 +201,48 @@
                     }
                 },
                 {
-                    name: 'Group B',
+                    name: 'Inter regional',
                     symbol: 'circle',
                     type: 'scatter',
                     markPoint: {
                         symbol: 'rect',
                         symbolSize: [70, 10],
-                        data: [{
-                            coord: ['B-1', 250],
-                            itemStyle: {
-                                color: '#F4AC7C',
-                                opacity: 0.7,
-                            }
-                        }],
+                        data: [
+                            {
+                                coord: ['B-1', 0],
+                                itemStyle: {
+                                    color: '#F4AC7C',
+                                    opacity: 0.7,
+                                }
+                            },
+                            {
+                                coord: ['B-1', 210],
+                                itemStyle: {
+                                    color: '#F4AC7C',
+                                    opacity: 0.7,
+                                }
+                            },
+                            {
+                                coord: ['B-1', 310],
+                                itemStyle: {
+                                    color: '#F4AC7C',
+                                    opacity: 0.7,
+                                }
+                            },
+                            {
+                                coord: ['B-1', 500],
+                                itemStyle: {
+                                    color: '#F4AC7C',
+                                    opacity: 0.7,
+                                }
+                            },
+                        ],
                     },
                     symbolSize: function (val) {
                         return val[2] * 2;
                     },
                     itemStyle: {
-                        color: 'blue',
+                        color: '#9673B5',
                         opacity: 0.5,
                     },
                     xAxisIndex: 1,
@@ -230,6 +261,86 @@
                         ['B-1', 120, 10],
                         ['B-2', 100, 12],
                         ['B-3', 500, 10],
+                    ],
+                    animationDelay: function (idx) {
+                        return idx * 5;
+                    }
+                },
+                {
+                    name: 'Outer regional',
+                    symbol: 'circle',
+                    type: 'scatter',
+                    symbolSize: function (val) {
+                        return val[2] * 2;
+                    },
+                    itemStyle: {
+                        color: '#1B8DC1',
+                        opacity: 0.5,
+                    },
+                    xAxisIndex: 1,
+                    data: [
+                        ['C-1', 0, 10],
+                        ['C-1', 100, 10],
+                        ['C-1', 210, 15],
+                        ['C-1', 220, 13],
+                        ['C-1', 230, 12],
+                        ['C-2', 240, 16],
+                        ['C-2', 250, 19],
+                        ['C-2', 270, 19],
+                        ['C-2', 280, 10],
+                        ['C-2', 290, 10],
+                        ['C-2', 300, 19],
+                        ['C-2', 120, 10],
+                        ['C-3+', 100, 12],
+                        ['C-3+', 500, 10],
+                    ],
+                    animationDelay: function (idx) {
+                        return idx * 5;
+                    }
+                },
+                {
+                    name: 'Remote',
+                    symbol: 'circle',
+                    type: 'scatter',
+                    markPoint: {
+                        symbol: 'rect',
+                        symbolSize: [70, 10],
+                        data: [
+                            {
+                                coord: ['D-1', 100],
+                                itemStyle: {
+                                    color: '#F4AC7C',
+                                    opacity: 0.7,
+                                }
+                            },
+                            {
+                                coord: ['D-1', 300],
+                                itemStyle: {
+                                    color: '#F4AC7C',
+                                    opacity: 0.7,
+                                }
+                            }
+                        ],
+                    },
+                    symbolSize: function (val) {
+                        return val[2] * 2;
+                    },
+                    itemStyle: {
+                        color: '#7D8B40',
+                        opacity: 0.5,
+                    },
+                    xAxisIndex: 1,
+                    data: [
+                        ['D-1', 0, 10],
+                        ['D-1', 110, 10],
+                        ['D-1', 220, 15],
+                        ['D-1', 250, 13],
+                        ['D-1', 290, 12],
+                        ['D-2+', 300, 16],
+                        ['D-2+', 310, 19],
+                        ['D-2+', 330, 19],
+                        ['D-2+', 350, 10],
+                        ['D-2+', 360, 10],
                     ],
                     animationDelay: function (idx) {
                         return idx * 5;
